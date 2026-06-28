@@ -119,10 +119,10 @@ a {
   position: sticky;
   top: 0;
   z-index: 50;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(185px, 0.72fr) minmax(0, 1.9fr) auto;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+  column-gap: 18px;
   min-height: var(--header-h);
   padding: 12px max(24px, calc((100vw - var(--max)) / 2));
   border-bottom: 1px solid var(--header-line);
@@ -141,7 +141,7 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  min-width: 220px;
+  min-width: 0;
   color: var(--ink);
   text-decoration: none;
 }
@@ -167,8 +167,8 @@ a {
 .brand-mark {
   position: relative;
   display: grid;
-  width: 42px;
-  height: 42px;
+  width: 52px;
+  height: 52px;
   place-items: center;
   overflow: hidden;
   border: 1px solid rgba(29, 87, 166, 0.24);
@@ -178,8 +178,8 @@ a {
 }
 
 .brand-mark img {
-  width: 34px;
-  height: 34px;
+  width: 48px;
+  height: 48px;
   object-fit: contain;
   display: block;
 }
@@ -201,17 +201,19 @@ a {
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
-  justify-content: flex-end;
+  gap: 4px;
+  min-width: 0;
+  flex-wrap: nowrap;
+  justify-content: center;
 }
 
 .site-nav a {
   border-radius: 6px;
   color: var(--muted);
-  padding: 9px 10px;
-  font-size: 15px;
+  padding: 8px 9px;
+  font-size: 14px;
   font-weight: 650;
+  white-space: nowrap;
   text-decoration: none;
   transition: background 160ms ease, color 160ms ease;
 }
@@ -678,26 +680,27 @@ a {
 
 .about-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
-  gap: 16px;
+  grid-template-columns: minmax(0, 1.25fr) minmax(290px, 0.75fr);
+  gap: 24px;
+  align-items: start;
 }
 
 .pi-card {
   display: grid;
-  grid-template-columns: 122px minmax(0, 1fr);
-  gap: 22px;
+  grid-template-columns: 130px minmax(0, 1fr);
+  gap: 24px;
   align-items: start;
   padding: 24px;
 }
 
 .pi-photo {
   display: block;
-  width: 122px;
+  width: 130px;
   aspect-ratio: 1 / 1.18;
   border: 1px solid rgba(29, 87, 166, 0.18);
-  border-radius: 8px;
+  border-radius: 10px;
   background: #e8eef5;
-  box-shadow: 0 14px 26px rgba(38, 49, 60, 0.14);
+  box-shadow: 0 16px 30px rgba(38, 49, 60, 0.15);
   object-fit: cover;
   object-position: center top;
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
@@ -712,19 +715,21 @@ a {
 .pi-card h3,
 .honor-card h3 {
   margin: 0;
-  font-size: 22px;
+  font-size: 21px;
+  letter-spacing: -0.01em;
 }
 
 .pi-card .role {
   margin: 6px 0 12px;
   color: var(--blue);
   font-weight: 760;
+  font-size: 15px;
 }
 
 .pi-card p:not(.role) {
-  margin: 0 0 16px;
+  margin: 0 0 14px;
   color: var(--muted);
-  line-height: 1.75;
+  line-height: 1.7;
 }
 
 .honor-card {
@@ -733,7 +738,7 @@ a {
 
 .honor-card ul {
   display: grid;
-  gap: 11px;
+  gap: 12px;
   margin: 16px 0 0;
   padding: 0;
   list-style: none;
@@ -741,20 +746,22 @@ a {
 
 .honor-card li {
   position: relative;
-  padding-left: 18px;
+  padding-left: 24px;
   color: var(--muted);
-  line-height: 1.6;
+  line-height: 1.58;
+  font-size: 14.5px;
 }
 
 .honor-card li::before {
   content: "";
   position: absolute;
   left: 0;
-  top: 0.65em;
-  width: 7px;
-  height: 7px;
+  top: 0.58em;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--green);
+  opacity: 0.85;
 }
 
 .section {
@@ -764,9 +771,9 @@ a {
 
 .section-heading {
   display: grid;
-  gap: 8px;
+  gap: 6px;
   max-width: 760px;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 
 .section-heading h2 {
@@ -962,9 +969,9 @@ a {
 
 .publication-item {
   display: grid;
-  grid-template-columns: 128px minmax(0, 1fr);
-  gap: 18px;
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
   border: 1px solid rgba(221, 228, 223, 0.95);
   border-radius: 8px;
   padding: 18px;
@@ -1156,10 +1163,22 @@ a {
 }
 
 .venue {
-  margin: 14px 0 10px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  border: 1px solid rgba(198, 74, 50, 0.22);
+  border-radius: 999px;
+  padding: 1px 8px;
   color: var(--coral);
-  font-size: 16px;
-  font-weight: 750;
+  background: rgba(198, 74, 50, 0.08);
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+.meta-sep {
+  color: rgba(95, 110, 123, 0.72);
 }
 
 .authors {
@@ -1205,6 +1224,12 @@ a {
 .dataset-card a:hover {
   border-color: rgba(29, 87, 166, 0.4);
   background: rgba(29, 87, 166, 0.1);
+}
+
+.dataset-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .pub-toggle {
@@ -1869,6 +1894,7 @@ a {
   }
 
   .site-header {
+    display: flex;
     padding: 10px 16px;
     gap: 10px;
   }
@@ -2007,6 +2033,11 @@ a {
   .brand-mark {
     width: 38px;
     height: 38px;
+  }
+
+  .brand-mark img {
+    width: 35px;
+    height: 35px;
   }
 
   .brand-text strong {
